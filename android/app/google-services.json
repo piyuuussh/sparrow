@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "10339774435",
+    "project_id": "sparrow-ad1f8",
+    "storage_bucket": "sparrow-ad1f8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10339774435:android:c6217487e902b9ba443ad6",
+        "android_client_info": {
+          "package_name": "com.example.clone_insta"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAspLoBsDaqW2K_p5i8P34lsDmSqJLy92c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10339774435:android:28952e6ef83f1160443ad6",
+        "android_client_info": {
+          "package_name": "com.example.imageselector"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAspLoBsDaqW2K_p5i8P34lsDmSqJLy92c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10339774435:android:7bf35914b497380f443ad6",
+        "android_client_info": {
+          "package_name": "com.example.sparrow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAspLoBsDaqW2K_p5i8P34lsDmSqJLy92c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
