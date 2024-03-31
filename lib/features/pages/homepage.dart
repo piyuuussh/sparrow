@@ -1,7 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:sparrow/core/constants/Icons.dart';
 
 import 'package:sparrow/core/constants/app_colors.dart';
+import 'package:sparrow/features/pages/ListPage.dart';
 import 'package:sparrow/features/widgets/drawer.dart';
 import 'package:sparrow/features/widgets/list_tile.dart';
 
@@ -15,7 +18,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool X = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,10 +29,10 @@ class _HomePageState extends State<HomePage> {
           children: [
             Spacer(),
             GestureDetector(
-              child: X ? Text('English') : Text("हिन्दी"),
+              child: staticVaribales.X ? Text('English') : Text("हिन्दी"),
               onTap: () {
                 setState(() {
-                  X = !X;
+                  staticVaribales.X = !staticVaribales.X;
                 });
                 ;
               },
@@ -43,8 +45,8 @@ class _HomePageState extends State<HomePage> {
       drawer: DrawerWidget(),
       body: Container(
         margin: EdgeInsets.only(
-          left: 27,
-          right: 27,
+          left: 17,
+          right: 17,
         ),
         child: Column(
           children: <Widget>[
@@ -56,28 +58,56 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(35),
                   color: AppColor.secondary,
+                  image: DecorationImage(
+                    image: AssetImage('Assets/image/image.png'),
+                    fit: BoxFit.fill,
+                  ),
                 ),
               ),
             ),
             Expanded(
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, // number of items in each row
-                  mainAxisSpacing: 20, // spacing between rows
-                  crossAxisSpacing: 20, // spacing between columns
-                ),
-                // padding around the grid
-                itemCount: 6, // total number of items
-                itemBuilder: (context, index) {
-                  return ListTileWidget(
-                    name: "name",
-                  );
-                },
-              ),
-            ),
+                child: StreamBuilder(
+                    stream: (staticVaribales.X == true)
+                        ? FirebaseFirestore.instance
+                            .collection('English')
+                            .snapshots()
+                        : FirebaseFirestore.instance
+                            .collection('Hindi')
+                            .snapshots(),
+                    builder: (context,
+                        AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                            snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return GridView.builder(
+                        //padding: EdgeInsets.all(15),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 20,
+                        ),
+                        itemCount: 6,
+                        itemBuilder: (BuildContext context, index) {
+                          final Icon = IconList.IconsPath[index];
+                          return ListTileWidget(
+                            Snap: snapshot.data!.docs[index].data(),
+                            im: AssetImage(Icon),
+                          );
+                        },
+                      );
+                    })),
             InkWell(
-              onTap: () {},
-              child: Text(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ListSparrow()),
+                );
+              },
+              child: const Text(
                 "View all",
                 style: TextStyle(fontSize: 20, color: AppColor.primary),
               ),

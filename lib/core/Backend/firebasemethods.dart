@@ -12,7 +12,7 @@ class Firebasemethods {
     final Reference ref = _storage
         .ref()
         .child("images")
-        .child(_firestore.collection('English').doc().id);
+        .child(_firestore.collection('Hindi').doc().id);
     UploadTask uploadTask = ref.putData(file);
     TaskSnapshot snap = await uploadTask;
     String downloadUrl = await snap.ref.getDownloadURL();
@@ -27,7 +27,7 @@ class Firebasemethods {
   }) async {
     String res = "Some error occured";
     try {
-      _firestore.collection('English').doc(index.toString()).set({
+      _firestore.collection('Hindi').doc(index.toString()).set({
         'name': name,
         'description': description,
         'index': index,

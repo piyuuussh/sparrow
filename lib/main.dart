@@ -1,11 +1,6 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:sparrow/core/constants/app_colors.dart';
-import 'package:sparrow/features/pages/ListPage.dart';
-import 'package:sparrow/features/pages/ask_us.dart';
-import 'package:sparrow/features/pages/homepage.dart';
 import 'package:sparrow/features/pages/splash_screen.dart';
-import 'package:sparrow/core/Backend/pickdata.dart';
-import 'package:sparrow/route/app_pages.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -14,16 +9,24 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MainApp());
+  runApp(MainApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class MainApp extends StatefulWidget {
+  MainApp({
+    super.key,
+  });
 
+  @override
+  State<MainApp> createState() => _MainAppState();
+}
+
+class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
