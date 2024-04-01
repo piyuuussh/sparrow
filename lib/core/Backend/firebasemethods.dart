@@ -2,7 +2,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class Firebasemethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -40,13 +40,13 @@ class Firebasemethods {
     return res;
   }
 
-  pickimage(ImageSource source) async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? image = await _picker.pickImage(source: source);
+  // pickimage(ImageSource source) async {
+  //   final ImagePicker _picker = ImagePicker();
+  //   final XFile? image = await _picker.pickImage(source: source);
 
-    if (image != null) {
-      return await image.readAsBytes();
-    }
-    return ("No images selected");
-  }
+  //   if (image != null) {
+  //     return await image.readAsBytes();
+  //   }
+  //   return ("No images selected");
+  // }
 }
