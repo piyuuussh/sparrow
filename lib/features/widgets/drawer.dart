@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:sparrow/core/constants/app_colors.dart';
 import 'package:sparrow/features/pages/Books.dart';
 import 'package:sparrow/features/widgets/drawer_list.dart';
@@ -16,15 +17,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
     return Drawer(
       width: MediaQuery.of(context).size.width * 0.7,
       backgroundColor: AppColor.primary,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          Container(
-            height: 100,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 60,
           ),
-          GestureDetector(
-              onTap: () {},
-              child: DrawerList(text: "Ask Us", icon: Icons.forum_outlined)),
+          DrawerList(text: "Ask Us", icon: Icons.forum_outlined),
           DrawerList(text: "Wallpapers", icon: Icons.add_to_photos),
           DrawerList(text: "Ringtones", icon: Icons.library_music),
           GestureDetector(
@@ -37,20 +35,16 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               child: DrawerList(text: "Books", icon: Icons.book_rounded)),
           DrawerList(text: "About Us", icon: Icons.info),
           DrawerList(text: "Share Us", icon: Icons.share),
-          DrawerList(
-            text: "Rate Us",
-            icon: Icons.note_alt_sharp,
+          DrawerList(text: "Rate Us", icon: Icons.note_alt_sharp),
+          Spacer(),
+          Text(
+            "Developed by Piyush Singh & Utkarsh Ranjan",
+            style: TextStyle(color: Colors.white, fontSize: 15),
+            textAlign: TextAlign.center,
           ),
-          const Spacer(),
-          const Padding(
-            padding:
-                EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8, top: 230),
-            child: Text(
-              "Developed by Piyush Singh & Utkarsh Ranjan",
-              style: TextStyle(color: Colors.white, fontSize: 15),
-              textAlign: TextAlign.center,
-            ),
-          ),
+          SizedBox(
+            height: 25,
+          )
         ],
       ),
     );
